@@ -9,13 +9,13 @@ const DecimalArr = (number, method, round, click) => {
 			if (click) {
 				let getNumber = () => {
 					let n = 0;
-					while(n.toString()[n.toString().length - 1] === "0" || n.toString()[0] === "0"){
-						const randomOne = [100, 1000, 10000][Math.floor(Math.random() * 3)];
-						const randomTwo = [10, 100, 1000][Math.floor(Math.random() * 3)];
+					while (n.toString()[n.toString().length - 1] === '0' || n.toString()[0] === '0') {
+						const randomOne = [ 100, 1000, 10000 ][Math.floor(Math.random() * 3)];
+						const randomTwo = [ 10, 100, 1000 ][Math.floor(Math.random() * 3)];
 						n = Math.round(Math.random() * randomOne) / randomTwo;
 					}
 					return n;
-				}
+				};
 				let i = 0;
 				while (i < number) {
 					const methods = [ '+', '-', '*', '/' ];
@@ -26,7 +26,14 @@ const DecimalArr = (number, method, round, click) => {
 						pickedMethod = method;
 					}
 					const one = getNumber();
-					const two = getNumber();
+					let two = 1;
+					if (pickedMethod === '*' || pickedMethod === '/') {
+						while (two === 1) {
+							two = Math.round(Math.random() * 200) / 10;
+						}
+					} else {
+						two = getNumber();
+					}
 					// eslint-disable-next-line no-eval
 					let result = Math.round(eval(`${one}` + pickedMethod + `${two}`) * round) / round;
 					// eslint-disable-next-line no-loop-func
