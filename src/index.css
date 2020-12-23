@@ -6,6 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(166, 202, 36);
+  background-image: url('math-people.png');
+  background-repeat: no-repeat;
+  background-position-x: center;
 }
 
 code {
@@ -81,6 +84,9 @@ h3{
   font-size: large;
   font-weight: 600;
   text-decoration: underline;
+  background-color: rgba(255,255,255,0.5);
+  max-width: fit-content;
+  border-radius: 5%;
 }
 
 input{
