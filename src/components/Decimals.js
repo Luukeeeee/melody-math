@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import DecimalArr from './logic/DecimalArr';
+import { motion } from 'framer-motion';
 
 const Decimals = () => {
 	const [ number, setNumber ] = useState(20);
@@ -19,7 +20,8 @@ const Decimals = () => {
 
 	const handleCheck = (id, result) => {
 		// eslint-disable-next-line no-eval
-		let value = Math.floor(eval(document.getElementById(`dec-input-${id}`).value) * 10000000000000) / 10000000000000;
+		let value =
+			Math.floor(eval(document.getElementById(`dec-input-${id}`).value) * 10000000000000) / 10000000000000;
 		if (value === result) {
 			document.getElementById(`dec-correct-${id}`).classList.remove('hide');
 			document.getElementById(`dec-wrong-${id}`).classList.add('hide');
@@ -38,7 +40,10 @@ const Decimals = () => {
 
 	return (
 		<div className="container">
-			<h3 className="purple-text text-darken-2">Decimals <span style={{fontSize: 20, color: 'red'}}>(results round to the nearest {round}th)</span></h3>
+			<h3 className="purple-text text-darken-2">
+				Decimals <span style={{ fontSize: 20, color: 'red' }} className="hide-on-med-and-down">(results round to the nearest {round}th)</span>
+			</h3>
+			<span style={{ fontSize: 16, color: 'red', marginLeft: 20 }} className="hide-on-large-only">(results round to the nearest {round}th)</span>
 			<div className="row control">
 				<div className="col l3 m6 s12">
 					<div className="choose-title">Choose Numbers</div>
@@ -169,7 +174,14 @@ const Decimals = () => {
 			<div className="row">
 				{arr.map((doc) => {
 					return (
-						<div className="col s12 m6 l4" key={doc.key}>
+						<motion.div
+							className="col s12 m6 l4"
+							key={doc.key}
+							layout
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ delay: 0.2 }}
+						>
 							<div className="card blue-grey darken-1">
 								<div className="card-content white-text text">
 									<span className="fraction">
@@ -208,7 +220,7 @@ const Decimals = () => {
 									</div>
 								</div>
 							</div>
-						</div>
+						</motion.div>
 					);
 				})}
 			</div>

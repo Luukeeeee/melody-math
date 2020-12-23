@@ -91,3 +91,7 @@ input{
 nav{
  padding-left: 30px;
 }
+
+.container{
+  min-width: 90%;
+}

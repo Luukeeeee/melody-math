@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import FractionArr from './logic/FractionArr';
+import { motion } from 'framer-motion';
 
 const Fractions = () => {
 	const [ number, setNumber ] = useState(20);
@@ -18,7 +19,8 @@ const Fractions = () => {
 
 	const handleCheck = (id, result) => {
 		// eslint-disable-next-line no-eval
-		let value = Math.floor(eval(document.getElementById(`frc-input-${id}`).value) * 10000000000000) / 10000000000000;
+		let value =
+			Math.floor(eval(document.getElementById(`frc-input-${id}`).value) * 10000000000000) / 10000000000000;
 		if (value === result) {
 			document.getElementById(`frc-correct-${id}`).classList.remove('hide');
 			document.getElementById(`frc-wrong-${id}`).classList.add('hide');
@@ -30,8 +32,8 @@ const Fractions = () => {
 
 	const handleEnter = (e) => {
 		if (e.keyCode === 13) {
-            const id = e.target.id.slice(10);
-            document.getElementById(`frc-btn-${id}`).click();
+			const id = e.target.id.slice(10);
+			document.getElementById(`frc-btn-${id}`).click();
 		}
 	};
 
@@ -145,7 +147,14 @@ const Fractions = () => {
 			<div className="row">
 				{arr.map((doc) => {
 					return (
-						<div className="col s12 m6 l4" key={doc.key}>
+						<motion.div
+							className="col s12 m6 l4"
+							key={doc.key}
+							layout
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ delay: 0.2 }}
+						>
 							<div className="card blue-grey darken-1">
 								<div className="card-content white-text text">
 									<span className="fraction">
@@ -161,11 +170,7 @@ const Fractions = () => {
 									</span>
 									<span>=</span>
 									<span className="input-field">
-										<input
-											id={`frc-input-${doc.key}`}
-											type="text"
-											onKeyDown={handleEnter}
-										/>
+										<input id={`frc-input-${doc.key}`} type="text" onKeyDown={handleEnter} />
 										<label>answer</label>
 									</span>
 								</div>
@@ -173,7 +178,7 @@ const Fractions = () => {
 									<div className="row">
 										<div className="col s4">
 											<span
-                                                id={`frc-btn-${doc.key}`}
+												id={`frc-btn-${doc.key}`}
 												className="btn btn-floating indigo darken-1"
 												onClick={() => handleCheck(doc.key, doc.result)}
 											>
@@ -192,7 +197,7 @@ const Fractions = () => {
 									</div>
 								</div>
 							</div>
-						</div>
+						</motion.div>
 					);
 				})}
 			</div>
