@@ -179,7 +179,7 @@ const Decimals = () => {
 							key={doc.key}
 							layout
 							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
+							animate={{ opacity: 0.98 }}
 							transition={{ delay: 0.2 }}
 						>
 							<div className="card blue-grey darken-1">
