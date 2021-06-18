@@ -20,8 +20,7 @@ const Decimals = () => {
 
 	const handleCheck = (id, result) => {
 		// eslint-disable-next-line no-eval
-		let value =
-			Math.floor(eval(document.getElementById(`dec-input-${id}`).value) * 10000000000000) / 10000000000000;
+		let value = eval(document.getElementById(`dec-input-${id}`).value);
 		if (value === result) {
 			document.getElementById(`dec-correct-${id}`).classList.remove('hide');
 			document.getElementById(`dec-wrong-${id}`).classList.add('hide');

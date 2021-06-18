@@ -20,7 +20,8 @@ const FractionArr = (number, method, click) => {
 					let three = Math.ceil(Math.random() * 20);
 					let four = Math.ceil(Math.random() * 19 + 1);
 					// eslint-disable-next-line no-eval
-					let result = Math.floor(eval(`(${one}/${two})` + pickedMethod + `(${three}/${four})`) * 10000000000000) / 10000000000000;
+					let result = Math.floor(eval(`(${one}/${two})` + pickedMethod + `(${three}/${four})`));
+					
 					// eslint-disable-next-line no-loop-func
 					setArr((previouseArr) => {
 						return [

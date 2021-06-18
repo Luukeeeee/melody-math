@@ -19,9 +19,8 @@ const Fractions = () => {
 
 	const handleCheck = (id, result) => {
 		// eslint-disable-next-line no-eval
-		let value =
-			Math.floor(eval(document.getElementById(`frc-input-${id}`).value) * 10000000000000) / 10000000000000;
-		if (value === result) {
+		let value = Math.floor(eval(document.getElementById(`frc-input-${id}`).value));
+		if (Math.abs( value - result ) < Number.EPSILON){
 			document.getElementById(`frc-correct-${id}`).classList.remove('hide');
 			document.getElementById(`frc-wrong-${id}`).classList.add('hide');
 		} else {
